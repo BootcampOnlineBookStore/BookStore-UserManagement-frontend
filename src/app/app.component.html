@@ -1,0 +1,22 @@
+<header class="container-fluid bg-dark text-center text-light p-5 mb-1 ">
+  <h1><img  [src]=bookimage class="rounded-circle" width="200" height="200">{{title}}</h1>
+    <div class="col-md-8 text-right">
+    <span *ngIf="!loginflag">
+      <a class="nav-item nav-link text-dark " id="homeloginbutton" routerLink="/adminlogin" class="btn btn-info">Login</a>
+    </span>
+
+      <span *ngIf="loginflag">
+        <span class="col-md-8 text-left">Hello {{email|titlecase}}</span>
+        <a class="nav-item nav-link text-dark" routerLink="/adminlogin" id="logoutbuttonclick" class="btn btn-danger" (click)="logout()">Logout</a>
+     </span>
+    </div>
+  </header>
+
+<nav class="col-md-12 mx-auto bg-dark p-2 row ">
+    <a   *ngIf = "loginflag && role=='admin'"  class="nav-item nav-link text-light"  id="create" routerLink="/createuser"><button type="button" id="createbtn" class="btn btn-light">Create User</button></a> 
+    <a   *ngIf = "loginflag && role=='admin'"  class="nav-item nav-link text-light"  id="edit" routerLink="/edituser"><button type="button" id="editbtn" class="btn btn-warning">Edit User</button></a>
+    <a   *ngIf = "loginflag && role=='admin'"  class="nav-item nav-link text-light"  id="list" routerLink="/listuser"><button type="button" id="listbtn" class="btn btn-secondary">List User </button></a>
+    <a   *ngIf = "loginflag && role=='admin'"  class="nav-item nav-link text-light"  id="listbyid" routerLink="/listuserbyid"><button type="button" id="listbyidbtn" class="btn btn-primary">List User by Id</button></a> 
+</nav>
+
+<router-outlet></router-outlet>

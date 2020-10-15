@@ -1,0 +1,52 @@
+<h2 class="text-center">Create User</h2>
+  <hr width="120">
+  <br>
+  <Section class="col-md-4 mx-auto mt-3">
+    <div class="alert alert-success" *ngIf="msg !=undefined">{{msg}}</div>
+    <div class="alert alert-danger" *ngIf="errorMsg !=undefined">{{errorMsg}}</div>
+  </Section> 
+ 
+  
+  <div class="border rounded border-success p-5" style=" width: 455px; margin: 0 auto;">
+    <form name="form" (ngSubmit)="frm.form.valid && createUser()" #frm="ngForm" novalidate>
+        <div>Name of the user</div>
+        <div style="width:100%"><input type="text"  class="form-control" required [(ngModel)]="userform.fullName" name="fullName" #fullName="ngModel" pattern="[A-Z][a-zA-Z ]*" placeholder="full name of the user" />
+          <div class="alert alert-danger" *ngIf="fullName.invalid && fullName.touched">
+              <div *ngIf="fullName.errors.required" style="color: red;"> * Full name of the user is required.</div>
+              <div *ngIf="fullName.errors.pattern" style="color: red;"> Name of the user must begin with Capital letter and should not begin with a number </div>
+        </div> 
+        </div>
+       
+          <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" name="email" [(ngModel)]="userform.email" #email="ngModel" [ngClass]="{ 'is-invalid': frm.touched && email.invalid }" required email placeholder="eg:-someone@email.com" />
+          <div *ngIf="frm.invalid && email.invalid" class="invalid-feedback">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.email">Email must be a valid email address</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" [(ngModel)]="userform.password" #password="ngModel" [ngClass]="{ 'is-invalid': frm.touched && password.invalid }" required minlength="8" placeholder="minimun 8 digits password is required" />
+          <div *ngIf="frm.touched && password.invalid" class="invalid-feedback">
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.password">Password must be minimum of 8 digits</div>
+          </div>
+        </div>
+          <div>Role</div>
+          <div><input type="text"  class="form-control" required [(ngModel)]="userform.role" name="role" #urole="ngModel" placeholder="role"/></div>
+          <div class="alert alert-danger" *ngIf="urole.invalid && urole.touched">
+            <div *ngIf="urole.errors.required" style="color: red;"> role is required.</div>
+          </div>
+    
+
+          <div class="mt-2 text-center"><input type="Submit" value="Add User" [disabled]="!frm.valid" class="btn btn-warning mt-2 text-center"/></div>
+
+   </form>
+    </div>
+    
+    
+      
+      
+
+

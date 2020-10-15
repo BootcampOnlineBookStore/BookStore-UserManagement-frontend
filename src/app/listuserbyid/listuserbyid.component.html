@@ -1,0 +1,33 @@
+<div class="col-md-6 mx-auto text-primary" *ngIf="fullName !=null">{{fullName|titlecase}}</div>
+<section class="col-4 mx-auto m1">
+    Email-ID <input type="text" name="txtname" [(ngModel)]="email" #emailid="ngModel" required class="form-control"/>
+    <div class="alert alert-danger" *ngIf="emailid.invalid && emailid.touched">Email ID is Required</div>
+    <h2 class="text-center">
+    <input type="button" class="btn btn-info"  (click)="searchById()" value="search" /></h2>
+</section>
+<section class="alert alert-danger col-12 mx-auto " *ngIf="msg != undefined">
+   {{msg}}
+</section>
+<section class="col-6 mx-auto m-1" *ngIf="user !=null">
+    <div class="mx-auto p-2 row">
+      <div class="col-md-6 p-2 bg-danger text-center text-light">Email</div>
+      <div class = "col-md-6 bg-warning p-2 text-center text-dark">{{user.email}}</div>
+    </div>
+    <div class="mx-auto p-2 row">
+        <div class="col-md-6 bg-warning p-2 text-center text-dark">User ID</div>
+        <div class = "col-md-6 bg-danger p-2 text-center text-light">{{user.userId}}</div>
+    </div>
+    <div class="mx-auto p-2 row">
+        <div class="col-md-6 bg-danger p-2 text-center text-light">Full Name</div>
+        <div class = "col-md-6 bg-warning p-2 text-center text-dark">{{user.fullName|titlecase}}</div>
+    </div>
+    <div class="mx-auto p-2 row">
+        <div class="col-md-6 bg-warning p-2 text-center text-dark">Password</div>
+        <div class = "col-md-6 bg-danger p-2 text-center text-light">{{user.password}}</div>
+    </div>
+    <div class="mx-auto p-2 row">
+        <div class="col-md-6 bg-danger p-2 text-center text-light">Update Date</div>
+        <div class = "col-md-6 bg-warning p-2 text-center text-dark">{{user.updatedDate}}</div>
+    </div>
+
+</section>

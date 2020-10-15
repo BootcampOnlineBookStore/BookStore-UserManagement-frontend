@@ -1,0 +1,73 @@
+<!--<section class="col-md-4 mx-auto">
+    <h2 class="text-center">Edit User</h2>
+    <div class="alert alert-success" *ngIf="msg!=undefined">{{msg}}</div>
+    <div class="alert alert-danger" *ngIf="errorMsg !=undefined ">{{errorMsg}}
+    </div>
+<form #frm="ngForm" (ngSubmit)="editUser()">
+<div>Email</div>
+<div><input type="name" name="emailId" [(ngModel)]="userform.email" required #mail="ngModel" class="form-control" readonly/></div>
+
+<div>User ID</div>
+<div><input type="text" name="userId" [(ngModel)]="userform.userId" required #userid="ngModel" class="form-control" readonly /></div>
+
+
+<div>Full name</div>
+<div><input type="text" name="fullName" [(ngModel)]="userform.fullName" required #name="ngModel" class="form-control" /></div>
+<div class="alert alert-danger" *ngIf="name.invalid && name.touched">User's full Name is required</div>
+
+<div>Password</div>
+<div><input type="text" name="password" [(ngModel)]="userform.password" required #pwd="ngModel" class="form-control" /></div>
+<div class="alert alert-danger" *ngIf="pwd.invalid && pwd.touched">Password is required</div>
+
+</form>
+</section>-->
+<div class="text-center alert alert-success col-md-4 mx-auto mt-3 " *ngIf="check">
+    <h2>{{ msg }}</h2>
+</div>
+<div class="mx-auto text-center col-12">
+    <div *ngIf="click">
+        <form #frm="ngForm" (ngSubmit)="updateDetails()" class="mx-auto">
+        <div>Email</div>
+        <input type="text" name="email" disabled [(ngModel)]="user1.email" class="form-group"/>
+        <div>userId</div> 
+        <input type="text" name="userId" disabled [(ngModel)]="user1.userId" class="form-group"/>
+        <div>Full Name</div> 
+        <input type="text" name="fullName" [(ngModel)]="user1.fullName" class="form-group"/>
+        <div>Password</div>
+         <input type="text" name="password" [(ngModel)]="user1.password" class="form-group"/>
+         <div>Role</div>
+        <input type="text" name="role" disabled [(ngModel)]="user1.role" class="form-group"/>
+        <div>
+         <input type="submit" value="update User" (click)="updateDetails()" class="form-group btn btn-success"/>
+        </div>
+        </form>
+    </div>
+    
+<div  class="table text-center col-12 mx-auto">
+    <table class="table shadow text-center table-striped table-hover col-md-12 mx-auto mt-3">
+        <thead class="thead-dark shadow white-text">
+        <tr>
+            <th>Email</th>
+            <th>User Id</th>
+            <th>Full Name</th>
+            <th>Password</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tr *ngFor="let u of allusers">
+            <td>{{u.email }}</td>
+            <td>{{u.userId}}</td>
+            <td>{{u.fullName }}</td>
+            <td>{{u.password}}</td>
+            <td>{{u.role}}</td>
+            <td><input type="button" value="update" (click)="updateUser(u)" class="btn btn-success"></td>
+        </tr>
+    </table>
+</div>
+<br>
+
+</div>
+
+
+
